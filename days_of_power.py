@@ -61,12 +61,13 @@ def get_days_of_power(R1,D1,R2,D2,R3,D3,K):
                 K-=i
                 days_of_power += 1
 
-        #We must keep truck of the last element in the out loan_rate list in case we still have some balance available
+        #We must keep truck of the last element in the loan_rate list in case we still have some balance available
         if(loan_days_rates[days_of_power]== loan_days_rates[-1]):
             extra_days = K //loan_days_rates[-1]
             days_of_power+=extra_days
 
         print ("total days of power are {}".format(days_of_power))
+        return days_of_power
 
     else:
         #Deals with loans starting on the same day
@@ -90,6 +91,7 @@ def get_days_of_power(R1,D1,R2,D2,R3,D3,K):
                     days_of_power+=extra_days
 
                 print ("total days of power are {}".format(days_of_power))
+                return days_of_power
 
 
             elif len(duplicate_start_dates_set) == 2:
@@ -98,6 +100,7 @@ def get_days_of_power(R1,D1,R2,D2,R3,D3,K):
                 duplicate_loan_days_rates = day_rates[earliest_day] + day_rates[duplicate_start_date_list[0]] + day_rates[duplicate_start_date_list[1]]
                 days_of_power = K //duplicate_loan_days_rates
                 print ("total days of power are {}".format(days_of_power))
+                return days_of_power
 
 
         else:
@@ -117,16 +120,10 @@ def get_days_of_power(R1,D1,R2,D2,R3,D3,K):
                 days_of_power+=extra_days
 
             print ("total days of power are {}".format(days_of_power))
+            return days_of_power
 
 
 
 
-
-get_days_of_power(R1=1000, D1=3, R2=500, D2=10, R3=1500, D3=7, K=21000)
-
-get_days_of_power(R1=3000, D1=3, R2=500, D2=10, R3=1500, D3=7, K=700000)
-get_days_of_power(R1=500, D1=3, R2=500, D2=10, R3=500, D3=7, K=21000)
-get_days_of_power(R1=1300, D1=0, R2=500, D2=0, R3=1500, D3=7, K=10000)
-get_days_of_power(R1=10000, D1=3, R2=500, D2=10, R3=1500, D3=7, K=11000)
 
 
